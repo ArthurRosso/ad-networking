@@ -1,0 +1,7 @@
+-- ver processos
+ps -ax
+
+killall routed
+routed -s -P ripv2 -i
+
+ifconfig igb0 10.3.5.254 netmask 255.255.255.0

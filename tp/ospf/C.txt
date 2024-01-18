@@ -1,0 +1,17 @@
+int fastEth 4
+no shutdown
+ip address 10.3.3.254 255.255.255.0
+exit
+
+int fastEth 0
+switchport accss vlan 2
+exit
+
+int vlan 2
+ip address 10.3.2.253 255.255.255.0
+
+enable
+conf t
+router ospf 110
+net 10.3.2.0 0.0.0.255 area 0
+net 10.3.3.0 0.0.0.255 area 0

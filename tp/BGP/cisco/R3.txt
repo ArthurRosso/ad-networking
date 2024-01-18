@@ -1,0 +1,31 @@
+enable
+conf t
+
+hostname R3
+
+int fastEth 0
+no shutdown
+switchport access vlan 2
+exit
+
+int vlan 2
+ip address 10.3.2.254 255.255.255.0
+exit
+
+int fastEth 1
+no shutdown
+switchport access vlan 3
+exit
+
+int vlan 3
+ip address 10.3.3.253 255.255.255.0
+exit
+
+exit
+wr
+
+conf t
+router ospf 110
+net 10.3.2.0 0.0.0.255 area 0
+net 10.3.3.0 0.0.0.255 area 0
+exit

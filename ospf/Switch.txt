@@ -1,9 +1,0 @@
-enable
-conf t
-mirror-port ethernet 1
-interface ethernet 2-3
-monitor
-
--- vlan 1:
---  untagged 1-8
---  ip address 192.168.0.254 255.255.255.0

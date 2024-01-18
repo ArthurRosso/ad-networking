@@ -1,0 +1,26 @@
+-- baixar zebra conf
+
+hostname R1
+
+-- entrar no zebra
+telnet localhost 2601
+
+-- rodar zebra deamon
+zebra -d
+
+ifconfig igb0 10.3.1.253 netmask 255.255.255.0
+sysctl net.inet.ip.forwarding=1
+
+ifconfig ue0 10.3.0.254 netmask 255.255.255.0
+
+-- baixar bgpd conf
+
+router bgp 30
+network 10.3.0.0/24
+neighbor 10.3.1.254 remote-as 32
+
+-- rodar bgpd deamon
+bgpd -d
+
+-- entrar bgpd
+telnet localhost 
